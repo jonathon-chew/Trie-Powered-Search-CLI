@@ -1,0 +1,17 @@
+git status
+git add .
+git commit -m ""
+git push
+git pull
+go run .
+go build ./...
+go test ./...
+go mod tidy
+docker ps
+docker compose up
+docker compose down
+rg "TODO"
+rg --files
+find . -name "*.go"
+ssh dev@server
+scp ./build.tar.gz dev@server:/tmp
