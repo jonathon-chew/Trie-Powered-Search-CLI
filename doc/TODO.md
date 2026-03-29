@@ -27,6 +27,7 @@ Build a local search CLI that indexes short text entries and returns matching re
 - [x] Recursive completion collection is working in the current implementation.
 - [x] Duplicate entries increment a terminal-node count.
 - [x] Current output can display match frequency counts.
+- [x] A small focused test suite covers core trie behavior.
 
 ## Immediate Next Step
 
@@ -35,9 +36,9 @@ Build a local search CLI that indexes short text entries and returns matching re
 - [x] Treat `Terminal` as "emit a result here", not "stop traversing here".
 - [x] Recurse once per child branch.
 - [x] Decide whether `trieFind` should return a node pointer instead of a copied node value.
-- [ ] Add explicit tests for terminal-with-children cases and exact prefix output.
+- [x] Add explicit tests for terminal-with-children cases and exact prefix output.
 - [ ] Decide whether to order output by count, alphabetically, or both.
-- [ ] Add explicit tests for duplicate-count behaviour.
+- [x] Add explicit tests for duplicate-count behaviour.
 
 ## Phase 1: Define The First Version
 
@@ -179,7 +180,7 @@ Implementation reminder:
 - [x] an entry that is itself a prefix of another still appears correctly,
 - [x] a terminal node can still have children and both results are surfaced,
 - [x] duplicate input is handled intentionally,
-- [ ] duplicate counts are printed consistently in the chosen output format,
+- [x] duplicate counts are printed consistently in the current output format,
 - result limits are respected,
 - case rules behave exactly as designed.
 

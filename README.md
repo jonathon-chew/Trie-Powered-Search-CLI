@@ -4,6 +4,13 @@
 
 `Trie-Powered-Search-CLI` is a local search tool for building fast prefix-based lookup over personal notes, command snippets, bookmarks, or glossary files. It turns the classic trie into something practical you can use day to day while learning how indexed string search differs from brute-force scanning.
 
+Today it supports:
+
+- indexing a newline-delimited text file,
+- prefix lookup over full lines,
+- recursive completion traversal below the matched prefix,
+- duplicate counting on exact full entries.
+
 ## Why This Project Exists
 
 This project is meant to teach:
@@ -13,11 +20,16 @@ This project is meant to teach:
 - ranking and suggestion strategies for autocomplete,
 - how to turn a core data structure into a useful CLI workflow.
 
+## Current Capabilities
+
+- Index a plain-text file with one entry per line.
+- Search by full-line prefix and print matching completions.
+- Track duplicate entries by frequency at terminal nodes.
+- Print counts beside each match.
+
 ## Planned Capabilities
 
 - Index a directory of plain-text files or line-based records.
-- Search by prefix and return matching entries quickly.
-- Track duplicate entries by frequency at terminal nodes.
 - Show autocomplete suggestions ranked by frequency, recency, or score.
 - Rebuild or persist the index for repeated local usage.
 
@@ -40,11 +52,40 @@ This project is meant to teach:
 3. Add incremental reindexing or persisted snapshots.
 4. Add highlighting, filtering, and benchmark comparisons against linear scans.
 
+## Usage
+
+Current CLI flags:
+
+- `--file`, `-f` for the input file
+- `--pattern`, `-p` for the prefix to search
+
+Example:
+
+```bash
+go run ./cmd/Trie-Powered-Search-CLI --file ./testdata/example.txt --pattern git
+```
+
+Example output:
+
+```text
+git status ( 1 )
+git add . ( 1 )
+git commit -m "" ( 1 )
+git push ( 1 )
+git pull ( 1 )
+```
+
+The output format is currently:
+
+- `<full match> ( <count> )`
+
+Counts represent how many times the exact full entry was inserted into the trie.
+
 ## Current Status
 
-This project is now partially implemented.
+This project is usable today for newline-delimited files and full-line prefix queries.
 
-Current progress includes:
+Implemented:
 
 - file ingestion for newline-delimited input,
 - a trie node model with child pointers,
@@ -52,14 +93,13 @@ Current progress includes:
 - prefix lookup that walks to the node matching the requested prefix,
 - recursive completion traversal below the matched prefix node,
 - terminal-node frequency counting for duplicate entries,
-- output that includes the current frequency count for each match.
+- focused automated tests for core trie behavior.
 
-Still to do:
+Still to do before calling it polished:
 
-- add explicit tests around exact-prefix and terminal-with-children behaviour,
-- handle edge cases such as empty lines,
-- add stable output ordering and tests,
-- decide whether to sort matches by count,
+- make output ordering deterministic,
+- add more edge-case coverage around empty lines and formatting,
+- decide whether to sort results alphabetically, by count, or both,
 - add practical ranking or persistence later.
 
 ## Current Implementation Notes
@@ -91,19 +131,9 @@ One important distinction in this project is:
 
 ## Development Notes
 
-Planned commands once implementation begins:
-
 - `go run ./cmd/Trie-Powered-Search-CLI`
 - `go build ./cmd/Trie-Powered-Search-CLI`
 - `go test ./...`
-
-Current learning checkpoint:
-
-- insertion is in the right structural shape,
-- prefix search is in the right structural shape,
-- recursive completion traversal is working,
-- duplicate-count tracking is working,
-- the next main step is tightening correctness and test coverage around exact-prefix behaviour, count-aware ordering, and output ordering.
 
 ## Project Structure
 
