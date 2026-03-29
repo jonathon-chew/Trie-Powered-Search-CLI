@@ -2,7 +2,7 @@
 
 ## Goal
 
-Build a local search CLI that indexes short text entries and returns matching results quickly for prefix queries. The main learning goal is to understand how a trie enables fast repeated prefix lookups compared to brute-force scanning.
+Build a local search CLI that indexes short text entries and returns matching results quickly for prefix queries. The primary technical goal is to demonstrate how a trie supports fast repeated prefix lookups and autocomplete-style traversal in a practical tool.
 
 ## Version 1 Definition
 
@@ -48,7 +48,9 @@ Version 1 should not try to be:
 - [x] Prefix lookup has reached the correct traversal shape.
 - [x] Recursive completion collection is working in the current implementation.
 - [x] Duplicate entries increment a terminal-node count.
-- [x] Current output can display match frequency counts.
+- [x] Structured output entries are collected after recursive traversal.
+- [x] Results are sorted after traversal.
+- [x] CLI-level result limits are supported.
 - [x] A small focused test suite covers core trie behavior.
 
 ## Immediate Next Step
@@ -59,15 +61,18 @@ Version 1 should not try to be:
 - [x] Recurse once per child branch.
 - [x] Decide whether `trieFind` should return a node pointer instead of a copied node value.
 - [x] Add explicit tests for terminal-with-children cases and exact prefix output.
-- [ ] Decide whether to order output by count, alphabetically, or both.
+- [x] Decide whether to order output by count, alphabetically, or both.
 - [x] Add explicit tests for duplicate-count behaviour.
+- [ ] Replace package-level output state with function-scoped result collection.
+- [ ] Restore or redesign count-aware printed output on top of the sorted results.
+- [ ] Add tests for sorted and limited output behavior.
 
 ## Employer-Facing Next 5
 
-1. [ ] Make output deterministic.
-2. [ ] Add count-aware ranking.
-3. [ ] Add a result limit.
-4. [ ] Separate trie traversal from CLI printing.
+1. [ ] Replace package-level output state with function-scoped results.
+2. [ ] Restore count-aware rendering from the structured output path.
+3. [ ] Add tests for sorted output and limit handling.
+4. [ ] Separate trie traversal completely from CLI formatting.
 5. [ ] Expose a reusable autocomplete-oriented result shape.
 
 ## Phase 1: Define The First Version
@@ -126,10 +131,10 @@ Implementation reminder:
 - [x] Once a prefix node is found, traverse below it to gather matches.
 - [x] Choose a traversal style.
 - Recommended starting point: depth-first traversal is simple and fine for the first version.
-- [ ] Return matching entries in a predictable order.
-- [ ] Decide how many matches to return at most.
+- [x] Return matching entries in a predictable order.
+- [x] Decide how many matches to return at most.
 - Recommended starting point: cap results to a small default such as 10 or 20.
-- [x] Include current frequency count in the emitted output.
+- [ ] Include current frequency count in the emitted output.
 
 Implementation reminder:
 
@@ -142,9 +147,9 @@ Implementation reminder:
 
 ## Phase 6: Add Ranking
 
-- [ ] Start with a simple ordering rule.
+- [x] Start with a simple ordering rule.
 - Recommended starting point: alphabetical order.
-- [ ] Evaluate count-based ordering for more frequently used commands.
+- [x] Evaluate count-based ordering for more frequently used commands.
 - Consider future ranking signals:
 - shorter matches first,
 - most frequently selected entries,
@@ -239,8 +244,8 @@ The practical implication is:
 - [x] an entry that is itself a prefix of another still appears correctly,
 - [x] a terminal node can still have children and both results are surfaced,
 - [x] duplicate input is handled intentionally,
-- [x] duplicate counts are printed consistently in the current output format,
-- result limits are respected,
+- [ ] duplicate counts are printed consistently in the current output format,
+- [ ] result limits are respected,
 - case rules behave exactly as designed.
 
 ## Good Example Test Data

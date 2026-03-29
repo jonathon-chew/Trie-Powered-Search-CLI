@@ -74,7 +74,7 @@ func (n *Node) trieInsert(line []byte) {
 	current.Count += 1
 }
 
-func File(fileName string, pattern string) {
+func File(fileName string, pattern string, limit int) {
 	file_pointer, err := os.Open(fileName)
 	if err != nil {
 		utils.Broke(err.Error())
@@ -88,6 +88,7 @@ func File(fileName string, pattern string) {
 	scanner.Buffer(buf, 10*1024*1024) // Max 10MB line size
 
 	var root = new(Node)
+	Outputs = []Output{}
 	// var child map[byte]Node
 	for scanner.Scan() { // Loop through the file
 		line := scanner.Bytes()
@@ -110,10 +111,13 @@ func File(fileName string, pattern string) {
 			return Outputs[i].Count > Outputs[j].Count
 		}
 
-		return Outputs[i].Count < Outputs[j].Count
+		return Outputs[i].Line < Outputs[j].Line
 	})
 
-	for _, output := range Outputs {
+	for counter, output := range Outputs {
+		if counter >= limit && limit != 0 {
+			break
+		}
 		fmt.Println(output.Line)
 	}
 }

@@ -19,7 +19,7 @@ func main() {
 		utils.Broke("No file path detected")
 	}
 
-	parse.File(Flags.FileName, Flags.Pattern)
+	parse.File(Flags.FileName, Flags.Pattern, Flags.Limit)
 
 	os.Exit(0)
 }
