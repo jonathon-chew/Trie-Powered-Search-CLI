@@ -1,0 +1,258 @@
+git status
+git add .
+git add -A
+git add -p
+git branch
+git branch -a
+git branch -d feature/old-work
+git branch -D feature/stuck-work
+git checkout main
+git checkout -b feature/trie-search
+git switch main
+git switch -c feature/indexing
+git commit -m "initial commit"
+git commit --amend
+git pull
+git pull --rebase
+git push
+git push --force-with-lease
+git fetch
+git fetch --all --prune
+git merge main
+git rebase main
+git rebase -i HEAD~5
+git cherry-pick abc1234
+git reset --soft HEAD~1
+git reset --mixed HEAD~1
+git stash
+git stash pop
+git stash list
+git log --oneline
+git log --oneline --graph --decorate
+git diff
+git diff --staged
+git show HEAD
+git restore .
+git restore --staged .
+git clean -fd
+git remote -v
+git tag
+git tag v1.0.0
+go run .
+go run ./cmd/Trie-Powered-Search-CLI
+go build ./...
+go build ./cmd/Trie-Powered-Search-CLI
+go test ./...
+go test -run TestTrieInsert ./...
+go test -run TestTrieFind ./...
+go test -run TestTrieReturn ./...
+go test -count=1 ./...
+go test -race ./...
+go test -cover ./...
+go fmt ./...
+go vet ./...
+go clean -testcache
+go clean -cache
+go env
+go env GOPATH
+go env GOMOD
+go mod tidy
+go mod download
+go mod graph
+go mod why github.com/stretchr/testify
+go list ./...
+go tool cover -html=coverage.out
+goroutine dump via pprof
+golangci-lint run
+gofmt -w .
+docker ps
+docker ps -a
+docker images
+docker image prune
+docker container prune
+docker volume ls
+docker network ls
+docker logs app
+docker logs -f app
+docker exec -it app sh
+docker exec -it app bash
+docker build -t trie-search:latest .
+docker run --rm trie-search:latest
+docker compose up
+docker compose up --build
+docker compose down
+docker compose logs
+docker compose logs -f api
+docker compose exec api sh
+docker tag trie-search:latest registry.local/trie-search:latest
+docker push registry.local/trie-search:latest
+kubectl get pods
+kubectl get svc
+kubectl get deployments
+kubectl get nodes
+kubectl describe pod trie-search-api
+kubectl logs trie-search-api
+kubectl logs -f trie-search-api
+kubectl exec -it trie-search-api -- sh
+kubectl apply -f deploy.yaml
+kubectl delete -f deploy.yaml
+kubectl rollout status deployment/trie-search
+kubectl rollout restart deployment/trie-search
+kubectl config get-contexts
+kubectl config use-context dev-cluster
+ssh dev@server
+ssh prod@server
+scp ./build.tar.gz dev@server:/tmp/build.tar.gz
+scp dev@server:/var/log/app.log ./app.log
+rsync -avz ./dist/ dev@server:/srv/app/
+rsync -avz --delete ./public/ prod@server:/srv/www/
+tar -czf release.tar.gz ./dist
+tar -xzf release.tar.gz
+zip -r release.zip ./dist
+unzip release.zip
+find . -name "*.go"
+find . -type f -name "*.md"
+find . -type d -name testdata
+find . -maxdepth 2 -type f
+rg "TODO"
+rg "trie"
+rg "Terminal"
+rg "Children"
+rg --files
+rg --files | rg "parse"
+grep -R "trieFind" .
+grep -R "trieReturn" .
+sed -n '1,120p' internal/parse/parse.go
+awk '{print $1}' large-commands.txt
+sort large-commands.txt
+sort large-commands.txt | uniq
+sort large-commands.txt | uniq -c
+head -n 20 large-commands.txt
+tail -n 20 large-commands.txt
+wc -l large-commands.txt
+curl https://example.com
+curl -I https://example.com
+curl -X POST https://api.example.com/search
+wget https://example.com/archive.tar.gz
+http GET https://api.example.com/health
+http POST https://api.example.com/index prefix=git
+ping 8.8.8.8
+ping github.com
+dig example.com
+nslookup example.com
+lsof -i :8080
+netstat -an
+ss -tulpn
+ps aux
+ps aux | rg trie
+top
+htop
+kill -9 12345
+killall trie-search
+make build
+make test
+make lint
+make clean
+npm install
+npm run dev
+npm run build
+npm test
+pnpm install
+pnpm dev
+pnpm build
+yarn install
+yarn dev
+yarn build
+python3 -m http.server
+python3 -m pytest
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+pip freeze
+uv sync
+uv run pytest
+cargo build
+cargo test
+cargo run
+rustc --version
+node --version
+npm --version
+go version
+git version
+docker version
+kubectl version --client
+brew install ripgrep
+brew upgrade go
+brew services list
+brew search kubectl
+brew info docker
+brew uninstall unused-tool
+ls
+ls -la
+pwd
+cd ~/Documents
+cd ~/Documents/Scripts/Go/Learning/Get-Good-At-Go
+mkdir -p tmp/output
+touch tmp/output/result.txt
+cp README.md tmp/output/README.copy.md
+mv tmp/output/result.txt tmp/output/final.txt
+rm tmp/output/final.txt
+cat README.md
+less README.md
+bat README.md
+tree -L 2
+tree Trie-Powered-Search-CLI
+code .
+vim internal/parse/parse.go
+nvim internal/parse/parse.go
+tmux ls
+tmux new -s trie
+tmux attach -t trie
+history
+history | tail -n 50
+alias gs='git status'
+alias gp='git push'
+export GOPATH=$HOME/go
+export GOCACHE=/tmp/go-cache
+env | sort
+printenv
+date
+date -u
+uname -a
+whoami
+which go
+which rg
+which docker
+chmod +x scripts/CICD.sh
+./scripts/CICD.sh
+./scripts/find_unused_exports.sh
+./scripts/get_cmd_commands_for_help_file.zsh
+forge -p Trie-Powered-Search-CLI -t golang
+forge -p Priority-Queue-Scheduler -t golang
+forge -p Dependency-Graph-Inspector -t golang
+codex
+codex --help
+codex resume
+codex run
+trie search git
+trie search go
+trie search dock
+trie search kube
+trie search rg
+trie search zzz
+trie index ./testdata/large-commands.txt
+trie index ./testdata/example.txt
+trie index ~/notes/commands.txt
+trie stats
+trie stats --json
+trie print-prefix git
+trie print-prefix go
+trie print-prefix docker
+trie print-prefix kubectl
+trie print-prefix trie
+trie print-prefix history
+trie exact git status
+trie exact go test ./...
+trie exact docker compose up
+trie exact kubectl get pods
+trie exact not-a-real-command
