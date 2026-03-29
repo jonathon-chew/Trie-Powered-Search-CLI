@@ -1,5 +1,7 @@
 # Trie-Powered-Search-CLI
 
+![Trie-Powered-Search-CLI banner](./assets/logo.png)
+
 ## Summary
 
 `Trie-Powered-Search-CLI` is a local search tool for building fast prefix-based lookup over personal notes, command snippets, bookmarks, or glossary files. It turns the classic trie into something practical you can use day to day while learning how indexed string search differs from brute-force scanning.
