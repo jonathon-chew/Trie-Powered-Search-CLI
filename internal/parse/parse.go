@@ -9,28 +9,29 @@ import (
 
 type Node struct {
 	Children map[byte]*Node
+	Count    int
 	Value    byte
 	Terminal bool
 }
 
-func (n *Node) trieFind(keys []byte) (Node, error) {
+func (n *Node) trieFind(keys []byte) (*Node, error) {
 
 	current := n
 
 	for _, i := range keys {
 		if current.Children[i] == nil {
-			return Node{}, fmt.Errorf("No Node Found")
+			return &Node{}, fmt.Errorf("No Node Found")
 		}
 		current = current.Children[i]
 	}
 
-	return *current, nil
+	return current, nil
 }
 
 func (n *Node) trieReturn(currentText string) {
 
 	if n.Terminal {
-		fmt.Println(currentText)
+		fmt.Println(currentText, "(", n.Count, ")")
 	}
 
 	for _, each_child := range n.Children {
@@ -58,6 +59,7 @@ func (n *Node) trieInsert(line []byte) {
 	}
 
 	current.Terminal = true
+	current.Count += 1
 }
 
 func File(fileName string, pattern string) {
