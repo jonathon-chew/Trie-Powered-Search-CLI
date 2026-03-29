@@ -106,6 +106,7 @@ func File(fileName string, pattern string, limit int) {
 
 	foundNode.trieReturn(pattern)
 
+	// Sort by frequency
 	sort.Slice(Outputs, func(i, j int) bool {
 		if Outputs[i].Count != Outputs[j].Count {
 			return Outputs[i].Count > Outputs[j].Count
@@ -114,10 +115,19 @@ func File(fileName string, pattern string, limit int) {
 		return Outputs[i].Line < Outputs[j].Line
 	})
 
+	// Sort by length of Line
+	/* sort.Slice(Outputs, func(i, j int) bool {
+		if len(Outputs[i].Line) != len(Outputs[j].Line) {
+			return len(Outputs[i].Line) > len(Outputs[j].Line)
+		}
+
+		return Outputs[i].Line < Outputs[j].Line
+	}) */
+
 	for counter, output := range Outputs {
 		if counter >= limit && limit != 0 {
 			break
 		}
-		fmt.Println(output.Line)
+		fmt.Println(output.Count, output.Line)
 	}
 }

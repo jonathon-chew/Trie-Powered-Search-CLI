@@ -150,6 +150,7 @@ Implementation reminder:
 - [x] Start with a simple ordering rule.
 - Recommended starting point: alphabetical order.
 - [x] Evaluate count-based ordering for more frequently used commands.
+
 - Consider future ranking signals:
 - shorter matches first,
 - most frequently selected entries,
