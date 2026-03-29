@@ -4,6 +4,28 @@
 
 Build a local search CLI that indexes short text entries and returns matching results quickly for prefix queries. The main learning goal is to understand how a trie enables fast repeated prefix lookups compared to brute-force scanning.
 
+## Version 1 Definition
+
+Version 1 of this project is a prefix-first autocomplete CLI for line-based command and snippet data.
+
+Version 1 should:
+
+- read a file with one entry per line,
+- build a trie over those entries,
+- accept a prefix query,
+- return matching completions,
+- track duplicate frequency counts,
+- return results in deterministic order,
+- support a small result limit,
+- stay simple enough that the trie remains the main data structure and story.
+
+Version 1 should not try to be:
+
+- full-text search,
+- fuzzy search,
+- shell integration,
+- persistent indexing across runs.
+
 ## Project Outcome
 
 - Index useful local data such as notes, snippets, commands, bookmarks, or glossary entries.
@@ -39,6 +61,14 @@ Build a local search CLI that indexes short text entries and returns matching re
 - [x] Add explicit tests for terminal-with-children cases and exact prefix output.
 - [ ] Decide whether to order output by count, alphabetically, or both.
 - [x] Add explicit tests for duplicate-count behaviour.
+
+## Employer-Facing Next 5
+
+1. [ ] Make output deterministic.
+2. [ ] Add count-aware ranking.
+3. [ ] Add a result limit.
+4. [ ] Separate trie traversal from CLI printing.
+5. [ ] Expose a reusable autocomplete-oriented result shape.
 
 ## Phase 1: Define The First Version
 
@@ -131,6 +161,35 @@ Implementation reminder:
 - indexing multiple files in a directory,
 - highlighting matched prefixes in output,
 - frequency-based suggestion ranking.
+
+## Reusable Autocomplete Direction
+
+The longer-term useful version of this project is not just a standalone search tool. It is also a reusable autocomplete engine for other CLI tools.
+
+Target use cases:
+
+- command snippet autocomplete,
+- subcommand autocomplete,
+- flag autocomplete,
+- argument autocomplete for controlled value sets.
+
+The key architectural shift for that future is:
+
+- trie logic should gather and return structured results,
+- CLI code should decide how to format and print them.
+
+Recommended result shape for that direction:
+
+- matched text,
+- frequency count,
+- whether the match is an exact terminal match,
+- optional score or rank value,
+- optional source metadata later if the project grows.
+
+The practical implication is:
+
+- avoid baking too much printing logic into trie traversal,
+- move toward "collect results, then sort/limit/print".
 
 ## Design Decisions To Make Early
 

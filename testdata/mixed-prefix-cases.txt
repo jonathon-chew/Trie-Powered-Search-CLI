@@ -1,0 +1,65 @@
+git status
+git stash
+git stash pop
+git switch main
+git log
+git log --oneline
+git log --oneline
+git reflog
+go test ./...
+go test -race ./...
+go mod tidy
+go run .
+docker ps
+docker compose up
+docker compose down
+kubectl get pods
+kubectl logs api
+rg "git"
+rg "TODO"
+find . -name "*.go"
+find . -name "*git*"
+alias gs='git status'
+alias gl='git log --oneline'
+echo "git status"
+printf "git log\n"
+notes about git branching
+remember to run git pull before pushing
+the git workflow for releases
+troubleshooting git merge conflicts
+using git log for debugging
+wrap git commands in scripts
+script uses git status for checks
+prefix-search should not match mid-line git
+learning git and go together
+my favorite tool is git
+ask shell to run git status later
+example: git commit -m "test"
+text containing git in the middle
+snippet: use git rebase carefully
+command history includes git stash pop
+shell history remembers git log --oneline
+Git status with uppercase g
+GIT STATUS in uppercase
+git-status with hyphen
+git_status with underscore
+github clone repo
+github actions workflow
+gitea admin panel
+gitlab pipeline status
+legit command name
+digit counter value
+widget renderer
+target file output
+musical digitizer
+go gitops controller
+docker image ls
+docker image prune
+docker system prune
+kubectl get svc
+kubectl get deployments
+ssh dev@server
+scp file dev@server:/tmp
+history | rg git
+cat .zsh_history | rg git
+bat README.md | rg git

@@ -5,6 +5,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"sort"
 )
 
 type Node struct {
@@ -13,6 +14,13 @@ type Node struct {
 	Value    byte
 	Terminal bool
 }
+
+type Output struct {
+	Count int
+	Line  string
+}
+
+var Outputs []Output
 
 func (n *Node) trieFind(keys []byte) (*Node, error) {
 
@@ -31,7 +39,11 @@ func (n *Node) trieFind(keys []byte) (*Node, error) {
 func (n *Node) trieReturn(currentText string) {
 
 	if n.Terminal {
-		fmt.Println(currentText, "(", n.Count, ")")
+		// fmt.Println(currentText, "(", n.Count, ")")
+		Outputs = append(Outputs, Output{
+			Line:  currentText,
+			Count: n.Count,
+		})
 	}
 
 	for _, each_child := range n.Children {
@@ -92,4 +104,16 @@ func File(fileName string, pattern string) {
 	}
 
 	foundNode.trieReturn(pattern)
+
+	sort.Slice(Outputs, func(i, j int) bool {
+		if Outputs[i].Count != Outputs[j].Count {
+			return Outputs[i].Count > Outputs[j].Count
+		}
+
+		return Outputs[i].Count < Outputs[j].Count
+	})
+
+	for _, output := range Outputs {
+		fmt.Println(output.Line)
+	}
 }
