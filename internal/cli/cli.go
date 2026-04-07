@@ -1,10 +1,11 @@
 package cli
 
 import (
-	"Trie-Powered-Search-CLI/pkg/utils"
 	"fmt"
 	"os"
 	"strconv"
+
+	"github.com/jonathon-chew/Trie-Powered-Search-CLI/pkg/utils"
 )
 
 type Flags struct {

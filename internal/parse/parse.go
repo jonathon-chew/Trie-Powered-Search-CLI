@@ -1,11 +1,12 @@
 package parse
 
 import (
-	"Trie-Powered-Search-CLI/pkg/utils"
 	"bufio"
 	"fmt"
 	"os"
 	"sort"
+
+	"github.com/jonathon-chew/Trie-Powered-Search-CLI/pkg/utils"
 )
 
 type Node struct {

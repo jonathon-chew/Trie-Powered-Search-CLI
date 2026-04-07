@@ -3,9 +3,9 @@ package main
 import (
 	"os"
 
-	"Trie-Powered-Search-CLI/internal/cli"
-	"Trie-Powered-Search-CLI/internal/parse"
-	"Trie-Powered-Search-CLI/pkg/utils"
+	"github.com/jonathon-chew/Trie-Powered-Search-CLI/internal/cli"
+	"github.com/jonathon-chew/Trie-Powered-Search-CLI/internal/parse"
+	"github.com/jonathon-chew/Trie-Powered-Search-CLI/pkg/utils"
 )
 
 func main() {
